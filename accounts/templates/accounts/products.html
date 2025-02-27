@@ -1,0 +1,27 @@
+{%extends 'accounts/main.html'%} {% block content%}
+<br />
+
+<div class="row">
+  <div class="col_mid">
+    <div class="card card-body">
+      <h1>Products</h1>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <tr>
+          <th>Products</th>
+          <th>Category</th>
+          <th>price</th>
+        </tr>
+        {% for i in products %}
+        <tr>
+          <td>{{ i.name}}</td>
+          <td>{{ i.category}}</td>
+          <td>{{ i.price}}</td>
+        </tr>
+        {% endfor%}
+      </table>
+    </div>
+  </div>
+</div>
+{%endblock%}
