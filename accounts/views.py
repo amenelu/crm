@@ -51,7 +51,7 @@ def logoutuser(request):
 
 
 @login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
+@admin_only
 def home(request):
     customers = Customer.objects.all()
     orders = Order.objects.all()
@@ -75,7 +75,7 @@ def home(request):
 @allowed_users(allowed_roles=["customer"])
 def userPage(request):
     context = {}
-    return render(request, "accounts/user.html", context)
+    return render(request, "accounts/userpage.html", context)
 
 
 @login_required(login_url="login")

@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponseForbidden
 from django.shortcuts import redirect
 
 
@@ -21,7 +21,7 @@ def allowed_users(allowed_roles=[]):
             if group in allowed_roles:
                 return view_func(request, *args, **kwargs)
             else:
-                return HttpResponse("You are not allowed to view this page")
+                return HttpResponseForbidden("You are not allowed to view this page")
 
         return wrapper_func
 
@@ -35,7 +35,7 @@ def admin_only(view_func):
             group = request.user.groups.all()[0].name
 
         if group == "customer":
-            return redirect("user-page")
+            return redirect("userpage")
         if group == "admin":
             return view_func(request, *args, **kwargs)
 
