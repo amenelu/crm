@@ -1,5 +1,5 @@
-{% extends 'accounts/main.html' %} {% block content %}
- {% include 'accounts/status.html' %}
+{% extends 'accounts/main.html' %} {% block content %} 
+{% include 'accounts/status.html' %}
 <div class="row">
   <div class="col-md">
     <div class="card card-body">
@@ -12,7 +12,7 @@
         </tr>
         {%for order in orders%}
         <tr>
-          <td>{{order.prouct}}</td>
+          <td>{{order.product.name}}</td>
           <td>{{order.product.category}}</td>
           <td>{{order.date_created}}</td>
           <td>{{order.status}}</td>
