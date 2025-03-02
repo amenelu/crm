@@ -75,7 +75,7 @@ def home(request):
 @allowed_users(allowed_roles=["customer"])
 def userPage(request):
     customer = getattr(request.user, "customer", None)
-    orders = customer.orderset.all() if customer else []
+    orders = customer.order_set.all() if customer else []
     context = {"orders": orders}
     return render(request, "accounts/userpage.html", context)
 
