@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 from accounts.filters import OrderFilter
 from .models import *
-from .forms import OrderForms, CreateUserForm
+from .forms import OrderForms, CreateUserForm, CustomerForm
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
 
@@ -90,6 +90,21 @@ def userPage(request):
         "pending": Pending,
     }
     return render(request, "accounts/userpage.html", context)
+
+
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["customer"])
+def accountSettings(request):
+    customer = request.user.customer
+    form = CustomerForm(instance=customer)
+
+    if request.method == "POST":
+        form = CustomerForm(request.POST, request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+
+    context = {"form": form}
+    return render(request, "accounts/accounts_settings.html", context)
 
 
 @login_required(login_url="login")
