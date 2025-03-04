@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path("register/", views.registerPage, name="register"),
@@ -14,4 +14,5 @@ urlpatterns = [
     path("create_order/<str:pk>/", views.createOrder, name="create_order"),
     path("update_order/<int:pk>/", views.updateOrder, name="update_order"),
     path("delete_order/<str:pk>/", views.deleteOrder, name="delete_order"),
+    path("reset_password/", auth_views.PasswordResetView.as_view()),
 ]
