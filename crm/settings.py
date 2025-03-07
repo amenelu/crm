@@ -141,4 +141,4 @@ EMAIL_HOST = "smtp.gmai.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMIAL_HOST_USER = "fikruamen11@gmail.com"
-EMAIL_HOST_PASSEORD = ""
+EMAIL_HOST_PASSEORD = "Project 1"
